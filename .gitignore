@@ -364,9 +364,19 @@ postgres_data/
 redis_data/
 rabbitmq_data/
 
-# Alembic migrations (keep structure but ignore generated files)
-alembic/versions/*.py
-!alembic/versions/.gitkeep
-
 # FastAPI specific
 .pytest_cache/
+
+# Development and testing scripts
+check_db.py
+test_*.py
+*_test.py
+
+# Alembic migration files (keep structure but ignore generated files)
+migrations/versions/*.py
+!migrations/versions/.gitkeep
+
+# Development database files
+*.db
+*.sqlite
+*.sqlite3
