@@ -34,5 +34,16 @@ services:
       - "5672:5672"
       - "15672:15672"
 
+  celery_worker:
+    build: ./backend
+    container_name: prodigyai_celery_worker
+    env_file: .env
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./backend:/app
+    command: celery -A app.celery_app worker --loglevel=info
+
 volumes:
   postgres_data:
