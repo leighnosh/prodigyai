@@ -16,6 +16,9 @@ if DB_HOST == "db":
     # Check if we're running inside Docker by looking for /.dockerenv
     if not os.path.exists("/.dockerenv"):
         DB_HOST = "localhost"
+        DB_PORT = "5433"  # Use mapped port when running outside Docker
+    else:
+        DB_PORT = "5432"  # Use default port when running inside Docker
 
 DATABASE_URL = f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
