@@ -11,7 +11,7 @@ REDIS_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/0"
 
 # Create Celery instance
 celery_app = Celery(
-    "prodigyai",
+    "velocity",
     broker=REDIS_URL,
     backend=REDIS_URL,
     include=["app.tasks.sample_tasks"]
